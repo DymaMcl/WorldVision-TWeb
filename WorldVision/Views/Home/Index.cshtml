@@ -3,524 +3,1016 @@
     ViewBag.Title = "Index";
 }
 
-<div class="container">
-    <div class="banner-top-thumb-wrap">
-        <div class="d-lg-flex justify-content-between align-items-center">
-            <div class="d-flex justify-content-between  mb-3 mb-lg-0">
-                <div>
+<!-- Stiluri pentru banner-ul cu reviste/articole -->
+<style>
+    .top-magazines-section {
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin: 30px 0;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #343a40;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e9ecef; /* Poți elimina și asta dacă nu vrei nicio linie */
+        position: relative;
+    }
+
+        /* Elimină complet linia albastră */
+        .section-title::after {
+            display: none;
+        }
+
+
+    .magazine-item {
+        background-color: #ffffff;
+        border-radius: 8px;
+        padding: 15px;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        height: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        .magazine-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+    .magazine-thumb-wrapper {
+        flex: 0 0 100px;
+        height: 80px;
+        overflow: hidden;
+        border-radius: 6px;
+        position: relative;
+    }
+
+    .magazine-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .magazine-item:hover .magazine-thumb {
+        transform: scale(1.05);
+    }
+
+    .category-indicator {
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 9px;
+        padding: 3px 6px;
+        background-color: rgba(115, 102, 255, 0.85);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-bottom-right-radius: 6px;
+    }
+
+    .magazine-content {
+        flex: 1;
+    }
+
+    .magazine-title {
+        font-size: 15px;
+        font-weight: 600;
+        color: #343a40;
+        margin: 0;
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: color 0.2s ease;
+    }
+
+    .magazine-item:hover .magazine-title {
+        color: #7366ff;
+    }
+
+    .magazine-meta {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 11px;
+        color: #6c757d;
+    }
+
+    .magazine-author {
+        display: flex;
+        align-items: center;
+        margin-right: 12px;
+    }
+
+    .author-icon {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+
+    .magazine-date {
+        display: flex;
+        align-items: center;
+    }
+
+    .date-dot {
+        width: 3px;
+        height: 3px;
+        background-color: #6c757d;
+        border-radius: 50%;
+        margin-right: 5px;
+    }
+</style>
+
+<div class="container top-magazines-section">
+    <h4 class="section-title">Top Stories</h4>
+    <div class="row magazines-container">
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="magazine-item">
+                <div class="magazine-thumb-wrapper">
                     <img src="~/Images/dashboard/star-magazine-1.jpg"
-                         alt="thumb"
-                         class="banner-top-thumb" />
+                         alt="Magazine thumbnail"
+                         class="magazine-thumb" />
+                    <span class="category-indicator">Travel</span>
                 </div>
-                <h5 class="m-0 font-weight-bold">
-                    The morning after: What people
-                </h5>
+                <div class="magazine-content">
+                    <h5 class="magazine-title">
+                        The morning after: What people are saying about travel
+                    </h5>
+                    <div class="magazine-meta">
+                        <span class="magazine-author">
+                            <img src="~/Images/dashboard/Profile_2.jpg" class="author-icon" alt="author">
+                            <span>John Smith</span>
+                        </span>
+                        <span class="magazine-date">
+                            <span class="date-dot"></span>
+                            <span>May 16, 2025</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-between mb-3 mb-lg-0">
-                <div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="magazine-item">
+                <div class="magazine-thumb-wrapper">
                     <img src="~/Images/dashboard/star-magazine-2.jpg"
-                         alt="thumb"
-                         class="banner-top-thumb" />
+                         alt="Magazine thumbnail"
+                         class="magazine-thumb" />
+                    <span class="category-indicator">Culture</span>
                 </div>
-                <h5 class="m-0 font-weight-bold">How Hungary produced the</h5>
+                <div class="magazine-content">
+                    <h5 class="magazine-title">
+                        How Hungary produced the world's most influential composers
+                    </h5>
+                    <div class="magazine-meta">
+                        <span class="magazine-author">
+                            <img src="~/Images/dashboard/Profile_4.jpg" class="author-icon" alt="author">
+                            <span>Maria Lopez</span>
+                        </span>
+                        <span class="magazine-date">
+                            <span class="date-dot"></span>
+                            <span>May 15, 2025</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-between mb-3 mb-lg-0">
-                <div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="magazine-item">
+                <div class="magazine-thumb-wrapper">
                     <img src="~/Images/dashboard/star-magazine-3.jpg"
-                         alt="thumb"
-                         class="banner-top-thumb" />
+                         alt="Magazine thumbnail"
+                         class="magazine-thumb" />
+                    <span class="category-indicator">Nature</span>
                 </div>
-                <h5 class="m-0 font-weight-bold">
-                    A sleepy island paradise's most
-                </h5>
+                <div class="magazine-content">
+                    <h5 class="magazine-title">
+                        A sleepy island paradise's most incredible natural attractions
+                    </h5>
+                    <div class="magazine-meta">
+                        <span class="magazine-author">
+                            <img src="~/Images/dashboard/Profile_5.jpg" class="author-icon" alt="author">
+                            <span>Alex Chen</span>
+                        </span>
+                        <span class="magazine-date">
+                            <span class="date-dot"></span>
+                            <span>May 14, 2025</span>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-between mb-3 mb-lg-0">
-                <div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="magazine-item">
+                <div class="magazine-thumb-wrapper">
                     <img src="~/Images/dashboard/star-magazine-4.jpg"
-                         alt="thumb"
-                         class="banner-top-thumb" />
+                         alt="Magazine thumbnail"
+                         class="magazine-thumb" />
+                    <span class="category-indicator">Outdoors</span>
                 </div>
-                <h5 class="m-0 font-weight-bold">
-                    America's most popular national
-                </h5>
+                <div class="magazine-content">
+                    <h5 class="magazine-title">
+                        America's most popular national parks and natural wonders
+                    </h5>
+                    <div class="magazine-meta">
+                        <span class="magazine-author">
+                            <img src="~/Images/dashboard/Profile_6.jpg" class="author-icon" alt="author">
+                            <span>Sarah Johnson</span>
+                        </span>
+                        <span class="magazine-date">
+                            <span class="date-dot"></span>
+                            <span>May 13, 2025</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="owl-carousel owl-theme" id="main-banner-carousel">
+            <div class="item">
+                <div class="news-card mb-4">
+                    <div class="carousel-image image-hover-effect">
+                        <img src="~/Images/dashboard/banner.jpg" alt="Parc de joc pentru copii" />
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <i class="mdi mdi-eye"></i>
+                                <p>Vezi detalii</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-title">
+                        <h4 class="mt-3 mb-1">The new children's playground opened in the city center</h4>
+                        <p class="text-muted">Modern facilities for the little ones, free daily access.</p>
+                        <p class="text-color m-0 pt-2 d-flex align-items-center">
+                            <span class="fs-10 mr-1">2 ore în urmă</span>
+                            <i class="mdi mdi-bookmark-outline mr-3"></i>
+                            <span class="fs-10 mr-1">126</span>
+                            <i class="mdi mdi-comment-outline"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="news-card mb-4">
+                    <div class="carousel-image image-hover-effect">
+                        <img src="~/Images/dashboard/banner_1.jpg" alt="Chitariști" />
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <i class="mdi mdi-eye"></i>
+                                <p>Vezi detalii</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-title">
+                        <h4 class="mt-3 mb-1">The local guitar band plays for charity</h4>
+                        <p class="text-muted">Charity concert organized for the benefit of underprivileged children.</p>
+                        <p class="text-color m-0 pt-2 d-flex align-items-center">
+                            <span class="fs-10 mr-1">5 ore în urmă</span>
+                            <i class="mdi mdi-bookmark-outline mr-3"></i>
+                            <span class="fs-10 mr-1">98</span>
+                            <i class="mdi mdi-comment-outline"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="news-card mb-4">
+                    <div class="carousel-image image-hover-effect">
+                        <img src="~/Images/dashboard/banner_2.jpg" alt="Concert" />
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <i class="mdi mdi-eye"></i>
+                                <p>Vezi detalii</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-title">
+                        <h4 class="mt-3 mb-1">Music festival brings international artists to the city</h4>
+                        <p class="text-muted">Three days of live concerts with stars from around the world</p>
+                        <p class="text-color m-0 pt-2 d-flex align-items-center">
+                            <span class="fs-10 mr-1">1 zi în urmă</span>
+                            <i class="mdi mdi-bookmark-outline mr-3"></i>
+                            <span class="fs-10 mr-1">215</span>
+                            <i class="mdi mdi-comment-outline"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="news-card mb-4">
+                    <div class="carousel-image image-hover-effect">
+                        <img src="~/Images/dashboard/banner_3.jpg" alt="Ochelari" />
+                        <div class="image-overlay">
+                            <div class="overlay-content">
+                                <i class="mdi mdi-eye"></i>
+                                <p>Vezi detalii</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-title">
+                        <h4 class="mt-3 mb-1">New 2025 eyewear collection</h4>
+                        <p class="text-muted">Fashion trends for all ages</p>
+                        <p class="text-color m-0 pt-2 d-flex align-items-center">
+                            <span class="fs-10 mr-1">3 zile în urmă</span>
+                            <i class="mdi mdi-bookmark-outline mr-3"></i>
+                            <span class="fs-10 mr-1">87</span>
+                            <i class="mdi mdi-comment-outline"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS for Image Hover Effects and News Cards -->
+<style>
+    .image-hover-effect {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        border-radius: 8px;
+    }
+
+        .image-hover-effect img {
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .image-hover-effect:hover img {
+            transform: scale(1.1);
+        }
+
+    .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .image-hover-effect:hover .image-overlay {
+        opacity: 1;
+    }
+
+    .overlay-content {
+        text-align: center;
+        color: white;
+    }
+
+        .overlay-content i {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .overlay-content p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+    .news-card {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        height: 100%;
+    }
+
+    .news-title {
+        padding: 15px;
+    }
+
+        .news-title h4 {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .news-title p.text-muted {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+</style>
+
+<!-- Required JavaScript for Owl Carousel -->
+<script>
+    $(document).ready(function () {
+        $("#main-banner-carousel").owlCarousel({
+            items: 2,
+            loop: true,
+            margin: 20,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            dots: true,
+            nav: true,
+            navText: ["<span aria-label='Previous'>‹</span>", "<span aria-label='Next'>›</span>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                576: {
+                    items: 1
+                },
+                768: {
+                    items: 2
+                }
+            },
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn'
+        });
+
+        // Add additional animation effect on hover
+        $(".carousel-image").hover(
+            function () {
+                $(this).find("img").css("filter", "brightness(110%)");
+            },
+            function () {
+                $(this).find("img").css("filter", "brightness(100%)");
+            }
+        );
+    });
+</script>
+
+
+<style>
+    .article-container {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+        padding: 25px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .article-card {
+        background-color: #ffffff;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        margin-bottom: 15px;
+        padding: 15px;
+        border-left: 3px solid transparent;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+        .article-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-left: 3px solid #7366ff;
+        }
+
+    .profile-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #e6e9f0;
+    }
+
+    .author-name {
+        color: #6c757d;
+        font-weight: 500;
+        margin-left: 10px;
+    }
+
+    .article-title {
+        color: #343a40;
+        font-weight: 600;
+        margin-top: 10px;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    .post-date {
+        font-size: 11px;
+        color: #adb5bd;
+        margin-left: auto;
+    }
+
+    .category-badge {
+        font-size: 10px;
+        padding: 3px 8px;
+        border-radius: 12px;
+        margin-top: 8px;
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .category-travel {
+        background-color: #e3f2fd;
+        color: #1976d2;
+    }
+
+    .category-lifestyle {
+        background-color: #e8f5e9;
+        color: #388e3c;
+    }
+
+    .category-food {
+        background-color: #fff8e1;
+        color: #ffa000;
+    }
+
+    .category-music {
+        background-color: #f3e5f5;
+        color: #8e24aa;
+    }
+
+    .category-health {
+        background-color: #ffebee;
+        color: #e53935;
+    }
+
+    .read-more {
+        font-size: 12px;
+        color: #7366ff;
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 10px;
+        display: inline-block;
+    }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #343a40;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #e9ecef;
+    }
+</style>
+
+<div class="container article-container">
+    <h4 class="section-title">Trending Articles</h4>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="article-card">
+                <div class="d-flex align-items-center">
+                    <img src="~/Images/dashboard/Profile_2.jpg"
+                         class="profile-img"
+                         alt="author" />
+                    <span class="author-name">Oka Tomoaki</span>
+                    <span class="post-date">May 15, 2025</span>
+                </div>
+                <p class="article-title">
+                    The Best Places to Travel in Month August
+                </p>
+                <span class="category-badge category-travel">Travel</span>
+                <div class="mt-2">
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="article-card">
+                <div class="d-flex align-items-center">
+                    <img src="~/Images/dashboard/Profile_2.jpg"
+                         class="profile-img"
+                         alt="author" />
+                    <span class="author-name">Joana Leite</span>
+                    <span class="post-date">May 14, 2025</span>
+                </div>
+                <p class="article-title">
+                    Focus On Fun And Challenging Lifetime Activities
+                </p>
+                <span class="category-badge category-lifestyle">Lifestyle</span>
+                <div class="mt-2">
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-8">
-            <div class="owl-carousel owl-theme" id="main-banner-carousel">
-                <div class="item">
-                    <div class="carousel-content-wrapper mb-2">
-                        <div class="carousel-content">
-                            <h1 class="font-weight-bold">
-                                If you wanted to get rich, how would you do it?
-                            </h1>
-                            <h5 class="font-weight-normal  m-0">
-                                Lorem Ipsum has been the industry's standard
-                            </h5>
-                            <p class="text-color m-0 pt-2 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                        <div class="carousel-image">
-                            <img src="~/Images/dashboard/banner.jpg" alt="" />
-                        </div>
-                    </div>
+        <div class="col-sm-6">
+            <div class="article-card">
+                <div class="d-flex align-items-center">
+                    <img src="~/Images/dashboard/Profile_4.jpg"
+                         class="profile-img"
+                         alt="author" />
+                    <span class="author-name">Rita Leite</span>
+                    <span class="post-date">May 12, 2025</span>
                 </div>
-                <div class="item">
-                    <div class="carousel-content-wrapper mb-2">
-                        <div class="carousel-content">
-                            <h1 class="font-weight-bold">
-                                If you wanted to get rich, how would you do it?
-                            </h1>
-                            <h5 class="font-weight-normal  m-0">
-                                Lorem Ipsum has been the industry's standard
-                            </h5>
-                            <p class="text-color m-0 pt-2 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                        <div class="carousel-image">
-                            <img src="~/Images/dashboard/banner_1.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content-wrapper mb-2">
-                        <div class="carousel-content">
-                            <h1 class="font-weight-bold">
-                                If you wanted to get rich, how would you do it?
-                            </h1>
-                            <h5 class="font-weight-normal  m-0">
-                                Lorem Ipsum has been the industry's standard
-                            </h5>
-                            <p class="text-color m-0 pt-2 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                        <div class="carousel-image">
-                            <img src="~/Images/dashboard/banner_2.jpg" alt="" />
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carousel-content-wrapper mb-2">
-                        <div class="carousel-content">
-                            <h1 class="font-weight-bold">
-                                If you wanted to get rich, how would you do it?
-                            </h1>
-                            <h5 class="font-weight-normal  m-0">
-                                Lorem Ipsum has been the industry's standard
-                            </h5>
-                            <p class="text-color m-0 pt-2 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                        <div class="carousel-image">
-                            <img src="~/Images/dashboard/banner_3.jpg" alt="" />
-                        </div>
-                    </div>
+                <p class="article-title">
+                    Bread Is The Most Widely Consumed Food In The World
+                </p>
+                <span class="category-badge category-food">Food</span>
+                <div class="mt-2">
+                    <a href="#" class="read-more">Read Article →</a>
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="article-card">
+                <div class="d-flex align-items-center">
+                    <img src="~/Images/dashboard/Profile_5.jpg"
+                         class="profile-img"
+                         alt="author" />
+                    <span class="author-name">Jurrien Oldhof</span>
+                    <span class="post-date">May 10, 2025</span>
+                </div>
+                <p class="article-title">
+                    What Is Music, And What Does It Mean To Us
+                </p>
+                <span class="category-badge category-music">Music</span>
+                <div class="mt-2">
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="article-card">
+                <div class="d-flex align-items-center">
+                    <img src="~/Images/dashboard/Profile_6.jpg"
+                         class="profile-img"
+                         alt="author" />
+                    <span class="author-name">Yamaha Toshinobu</span>
+                    <span class="post-date">May 8, 2025</span>
+                </div>
+                <p class="article-title">
+                    Is Breakfast The Most Important Meal Of The Day
+                </p>
+                <span class="category-badge category-health">Health</span>
+                <div class="mt-2">
+                    <a href="#" class="read-more">Read Article →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    </div>
-    <div class="col-sm-6">
-        <div class="py-3 border-bottom">
-            <div class="d-flex align-items-center pb-2">
-                <img src="~/Images/dashboard/Profile_2.jpg"
-                     class="img-xs img-rounded mr-2"
-                     alt="thumb" />
-                <span class="fs-12 text-muted">Oka Tomoaki</span>
-            </div>
-            <p class="fs-14 m-0 font-weight-medium line-height-sm">
-                The Best Places to Travel in month August
-            </p>
-        </div>
-    </div>
-</div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="pt-4 pb-4 border-bottom">
-                        <div class="d-flex align-items-center pb-2">
-                            <img src="~/Images/dashboard/Profile_2.jpg"
-                                 class="img-xs img-rounded mr-2"
-                                 alt="thumb" />
-                            <span class="fs-12 text-muted">Joana Leite</span>
-                        </div>
-                        <p class="fs-14 m-0 font-weight-medium line-height-sm">
-                            Focus On Fun And Challenging Lifetime Activities
-                        </p>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="pt-3 pb-4 border-bottom">
-                        <div class="d-flex align-items-center pb-2">
-                            <img src="~/Images/dashboard/Profile_4.jpg"
-                                 class="img-xs img-rounded mr-2"
-                                 alt="thumb" />
-                            <span class="fs-12 text-muted">Rita Leite</span>
-                        </div>
-                        <p class="fs-14 m-0 font-weight-medium line-height-sm">
-                            Bread Is The Most Widely Consumed Food In The World
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="pt-4 pb-4">
-                        <div class="d-flex align-items-center pb-2">
-                            <img src="~/Images/dashboard/Profile_5.jpg"
-                                 class="img-xs img-rounded mr-2"
-                                 alt="thumb" />
-                            <span class="fs-12 text-muted">Jurrien Oldhof</span>
-                        </div>
-                        <p class="fs-14 m-0 font-weight-medium line-height-sm">
-                            What Is Music, And What Does It Mean To Us
-                        </p>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="pt-3 pb-4">
-                        <div class="d-flex align-items-center pb-2">
-                            <img src="~/Images/dashboard/Profile_6.jpg"
-                                 class="img-xs img-rounded mr-2"
-                                 alt="thumb" />
-                            <span class="fs-12 text-muted">Yamaha Toshinobu</span>
-                        </div>
-                        <p class="fs-14 m-0 font-weight-medium line-height-sm">
-                            Is Breakfast The Most Important Meal Of The Day
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="world-news">
+<<!-- CSS modern pentru site-ul de știri -->
+<style>
+    /* Stiluri generale pentru site */
+    body {
+        font-family: 'Roboto', 'Segoe UI', sans-serif;
+        background-color: #f9fafb;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Stiluri pentru secțiunile principale */
+    .news-section {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .news-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #4a6bff, #6368ff, #7366ff);
+        }
+
+    /* Titluri de secțiuni */
+    .section-title {
+        position: relative;
+        font-size: 22px;
+        font-weight: 700;
+        color: #111;
+        margin-bottom: 25px;
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 3px;
+            background: linear-gradient(to right, #4a6bff, #7366ff);
+            bottom: 0;
+            left: 0;
+            border-radius: 3px;
+        }
+
+    /* Card-uri de știri */
+    .news-card {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+    /* Container pentru imagine */
+    .image-hover {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px 8px 0 0;
+    }
+
+        .image-hover img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+    .news-card:hover .image-hover img {
+        transform: scale(1.05);
+    }
+
+    /* Etichete de categorie */
+    .thumb-title {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(90deg, rgba(115, 102, 255, 0.9) 0%, rgba(115, 102, 255, 0.7) 100%);
+        color: white;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 6px 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-radius: 0 8px 0 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Conținut card */
+    .news-content {
+        padding: 20px;
+    }
+
+    h5.news-title {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-top: 0;
+        margin-bottom: 10px;
+        color: #222;
+        transition: color 0.2s ease;
+    }
+
+    .news-card:hover h5.news-title {
+        color: #7366ff;
+    }
+
+    h1.news-headline {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1.3;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        color: #111;
+    }
+
+    p.news-excerpt {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    /* Link-uri "Read Article" */
+    a.read-more {
+        display: inline-block;
+        color: #7366ff;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+        position: relative;
+        padding-bottom: 2px;
+        transition: all 0.2s ease;
+    }
+
+        a.read-more::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #7366ff;
+            transition: width 0.3s ease;
+        }
+
+        a.read-more:hover::after {
+            width: 100%;
+        }
+
+        a.read-more:hover {
+            color: #4a6bff;
+        }
+
+    /* Secțiunea "Latest News" */
+    .latest-news-item {
+        padding: 15px 0;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.2s ease;
+    }
+
+        .latest-news-item:hover {
+            background-color: #f8f9ff;
+            padding-left: 10px;
+        }
+
+        .latest-news-item:last-child {
+            border-bottom: none;
+        }
+
+    /* Video thumb */
+    .video-thumb {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background-color: rgba(255, 0, 0, 0.8);
+        color: white;
+        font-weight: 700;
+        padding: 5px 10px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+    }
+
+        .video-thumb span {
+            margin-right: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+    /* Meta informații (data, comentarii) */
+    .news-meta {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        color: #888;
+        margin-top: 10px;
+    }
+
+        .news-meta i {
+            margin: 0 5px 0 10px;
+            font-size: 14px;
+        }
+
+        .news-meta span:first-child {
+            margin-left: 0;
+        }
+
+    /* Responsiv */
+
+    .news-section {
+        padding: 20px;
+    }
+
+    .image-hover img {
+        height: 180px;
+    }
+
+    h1.news-headline {
+        font-size: 20px;
+    }
+
+
+
+
+    .news-section::before {
+        width: 4px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .image-hover img {
+        height: 160px;
+    }
+
+
+
+    /* Adăugăm spațiere pentru grid */
+    .row {
+        margin-bottom: 30px;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+
+    .mb-5 {
+        margin-bottom: 3rem;
+    }
+</style>
+
+<!-- HTML restructurat -->
+<div class="container">
+    <!-- Secțiunea World News -->
+    <div class="news-section world-news">
         <div class="row">
             <div class="col-sm-12">
-                <div class="d-flex position-relative  float-left">
-                    <h3 class="section-title">World News</h3>
-                </div>
+                <h3 class="section-title">World News</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-sm-6 grid-margin mb-5 mb-sm-2">
-                <div class="position-relative image-hover">
-                    <img src="~/Images/dashboard/travel.jpg"
-                         class="img-fluid"
-                         alt="world-news" />
-                    <span class="thumb-title">TRAVEL</span>
-                </div>
-                <h5 class="font-weight-bold mt-3">
-                    Refugees flood Turkey's border with Greece
-                </h5>
-                <p class="fs-15 font-weight-normal">
-                    Lorem Ipsum has been the industry's standard dummy text
-                </p>
-                <a href="#" class="font-weight-bold text-dark pt-2">Read Article</a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-5 mb-sm-2">
-                <div class="position-relative image-hover">
-                    <img src="~/Images/dashboard/news.jpg"
-                         class="img-fluid"
-                         alt="world-news" />
-                    <span class="thumb-title">NEWS</span>
-                </div>
-                <h5 class="font-weight-bold mt-3">
-                    South Korea’s Moon Jae-in sworn in vowing address
-                </h5>
-                <p class="fs-15 font-weight-normal">
-                    Lorem Ipsum has been the industry's standard dummy text
-                </p>
-                <a href="#" class="font-weight-bold text-dark pt-2">Read Article</a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-5 mb-sm-2">
-                <div class="position-relative image-hover">
-                    <img src="~/Images/dashboard/art.jpg"
-                         class="img-fluid"
-                         alt="world-news" />
-                    <span class="thumb-title">ART</span>
-                </div>
-                <h5 class="font-weight-bold mt-3">
-                    These puppies are training to assist in avalanche rescue
-                </h5>
-                <p class="fs-15 font-weight-normal">
-                    Lorem Ipsum has been the industry's standard dummy text
-                </p>
-                <a href="#" class="font-weight-bold text-dark pt-2">Read Article</a>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-5 mb-sm-2">
-                <div class="position-relative image-hover">
-                    <img src="~/Images/dashboard/business.jpg"
-                         class="img-fluid"
-                         alt="world-news" />
-                </div>
-                <h5 class="font-weight-bold mt-3">
-                    'Love Is Blind' couple opens up about their first year
-                </h5>
-                <p class="fs-15 font-weight-normal">
-                    Lorem Ipsum has been the industry's standard dummy text
-                </p>
-                <a href="#" class="font-weight-bold text-dark pt-2">Read Article</a>
-            </div>
-        </div>
-    </div>
-    <div class="editors-news">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="d-flex position-relative float-left">
-                    <h3 class="section-title">Popular News</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6  mb-5 mb-sm-2">
-                <div class="position-relative image-hover">
-                    <img src="~/Images/dashboard/glob.jpg"
-                         class="img-fluid"
-                         alt="world-news" />
-                    <span class="thumb-title">NEWS</span>
-                </div>
-                <h1 class="font-weight-600 mt-3">
-                    Melania Trump speaks about courage at State Department
-                </h1>
-                <p class="fs-15 font-weight-normal">
-                    Lorem Ipsum has been the industry's standard dummy text ever
-                    since the 1500s, when an unknown printer took a galley of type
-                    and
-                </p>
-            </div>
-            <div class="col-lg-6  mb-5 mb-sm-2">
-                <div class="row">
-                    <div class="col-sm-6  mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-5.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">POLITICS</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            A look at California's eerie plane graveyards
-                        </h5>
-                        <p class="fs-15 font-weight-normal">
-                            Lorem Ipsum has been the industry's standard dummy text
-                        </p>
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="news-card">
+                    <div class="image-hover">
+                        <img src="~/Images/dashboard/travel.jpg" alt="world-news" />
+                        <span class="thumb-title">TRAVEL</span>
                     </div>
-                    <div class="col-sm-6  mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-6.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">TRAVEL</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            The world's most beautiful racecourses
-                        </h5>
-                        <p class="fs-15 font-weight-normal">
-                            Lorem Ipsum has been the industry's standard dummy text
-                        </p>
+                    <div class="news-content">
+                        <h5 class="news-title">Refugees flood Turkey's border with Greece</h5>
+                        <p class="news-excerpt">Lorem Ipsum has been the industry's standard dummy text</p>
+                        <a href="#" class="read-more">Read Article</a>
                     </div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-sm-6  mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-7.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">POLITICS</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            Japan cancels cherry blossom festivals over virus fears
-                        </h5>
-                        <p class="fs-15 font-weight-normal">
-                            Lorem Ipsum has been the industry's standard dummy text
-                        </p>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="news-card">
+                    <div class="image-hover">
+                        <img src="~/Images/dashboard/news.jpg" alt="world-news" />
+                        <span class="thumb-title">NEWS</span>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-8.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">TRAVEL</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            Classic cars reborn as electric vehicles
-                        </h5>
-                        <p class="fs-15 font-weight-normal">
-                            Lorem Ipsum has been the industry's standard dummy text
-                        </p>
+                    <div class="news-content">
+                        <h5 class="news-title">South Korea's Moon Jae-in sworn in vowing address</h5>
+                        <p class="news-excerpt">Lorem Ipsum has been the industry's standard dummy text</p>
+                        <a href="#" class="read-more">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="news-card">
+                    <div class="image-hover">
+                        <img src="~/Images/dashboard/art.jpg" alt="world-news" />
+                        <span class="thumb-title">ART</span>
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">These puppies are training to assist in avalanche rescue</h5>
+                        <p class="news-excerpt">Lorem Ipsum has been the industry's standard dummy text</p>
+                        <a href="#" class="read-more">Read Article</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 mb-4">
+                <div class="news-card">
+                    <div class="image-hover">
+                        <img src="~/Images/dashboard/business.jpg" alt="world-news" />
+                        <span class="thumb-title">BUSINESS</span>
+                    </div>
+                    <div class="news-content">
+                        <h5 class="news-title">'Love Is Blind' couple opens up about their first year</h5>
+                        <p class="news-excerpt">Lorem Ipsum has been the industry's standard dummy text</p>
+                        <a href="#" class="read-more">Read Article</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="popular-news">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="d-flex position-relative float-left">
-                    <h3 class="section-title">Editor choice</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-9">
-                <div class="row">
-                    <div class="col-sm-4  mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-9.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">LIFESTYLE</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            The island country that gave Mayor Pete his name
-                        </h5>
-                    </div>
-                    <div class="col-sm-4 mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-10.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">SPORTS</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            Disney parks expand (good) vegan food options
-                        </h5>
-                    </div>
-                    <div class="col-sm-4 mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-11.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">INTERNET</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            A hot springs where clothing is optional after dark
-                        </h5>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-sm-4 mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-12.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">NEWS</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            Japanese chef carves food into incredible pieces of art
-                        </h5>
-                    </div>
-                    <div class="col-sm-4 mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-13.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">NEWS</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            The Misanthrope Society: A Taipei bar for people who
-                        </h5>
-                    </div>
-                    <div class="col-sm-4 mb-5 mb-sm-2">
-                        <div class="position-relative image-hover">
-                            <img src="~/Images/dashboard/star-magazine-14.jpg"
-                                 class="img-fluid"
-                                 alt="world-news" />
-                            <span class="thumb-title">TOURISM</span>
-                        </div>
-                        <h5 class="font-weight-600 mt-3">
-                            From Pakistan to the Caribbean: Curry's journey
-                        </h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="position-relative mb-3">
-                    <img src="~/Images/dashboard/star-magazine-15.jpg"
-                         class="img-fluid"
-                         alt="world-news" />
-                    <div class="video-thumb text-muted">
-                        <span><i class="mdi mdi-menu-right"></i></span>LIVE
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="d-flex position-relative float-left">
-                            <h3 class="section-title">Latest News</h3>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="border-bottom pb-3">
-                            <h5 class="font-weight-600 mt-0 mb-0">
-                                South Korea’s Moon Jae-in sworn in vowing address
-                            </h5>
-                            <p class="text-color m-0 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="border-bottom pt-4 pb-3">
-                            <h5 class="font-weight-600 mt-0 mb-0">
-                                South Korea’s Moon Jae-in sworn in vowing address
-                            </h5>
-                            <p class="text-color m-0 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="border-bottom pt-4 pb-3">
-                            <h5 class="font-weight-600 mt-0 mb-0">
-                                South Korea’s Moon Jae-in sworn in vowing address
-                            </h5>
-                            <p class="text-color m-0 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="pt-4">
-                            <h5 class="font-weight-600 mt-0 mb-0">
-                                South Korea’s Moon Jae-in sworn in vowing address
-                            </h5>
-                            <p class="text-color m-0 d-flex align-items-center">
-                                <span class="fs-10 mr-1">2 hours ago</span>
-                                <i class="mdi mdi-bookmark-outline mr-3"></i>
-                                <span class="fs-10 mr-1">126</span>
-                                <i class="mdi mdi-comment-outline"></i>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+   
+   
 <!-- main-panel ends -->
 <!-- container-scroller ends -->
 <!-- partial:partials/_footer.html -->
