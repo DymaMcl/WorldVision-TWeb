@@ -1,0 +1,51 @@
+﻿
+@using System.Web.Optimization;
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>World Vision</title>
+    <!-- plugin css for this page -->
+    @Styles.Render("~/bundles/materialdesignicons/css")
+    
+    @Styles.Render("~/bundles/style/css")
+
+    @Styles.Render("~/bundles/aos/css")
+    @Styles.Render("~/bundles/owl.carouse/css")
+    @Styles.Render("~/bundles/owl.theme.default/css")
+    @Styles.Render("~/bundles/font-awesome/css")
+    @Styles.Render("~/bundles/bootstrap/css")
+
+
+
+    <!-- End plugin css for this page -->
+    <link rel="shortcut icon" href="~/Images/favicon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    @Html.Partial("_Header")
+
+    @RenderBody()
+
+    @Html.Partial("_Footer")
+
+
+
+    @Scripts.Render("~/bundles/vendor.bundle.base/js")
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    @Scripts.Render("~/bundles/owl.carousel/js")
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    @Scripts.Render("~/bundles/demo/js")
+
+    <!-- End custom js for this page-->
+</body>
+</html>
+
+

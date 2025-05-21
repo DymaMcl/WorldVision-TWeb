@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "_Header";
+}
+
+
+                <!-- partial:partials/_navbar.html -->
+                <nav class="navbar2 navbar-expand-lg navbar-light">
+                    <div class="d-flex justify-content-between align-items-center navbar-top">
+                      
+                        <div>
+                            <a class="navbar-brand" href="#">
+                                <img src="~/Images/logo.svg" alt="" />
+                            </a>
+                        </div>
+                        <div class="d-flex">
+                            
+                            <ul class="social-media">
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-twitter"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="navbar-bottom-menu">
+                        <button class="navbar-toggler"
+                                type="button"
+                                data-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="navbar-collapse justify-content-center collapse"
+                             id="navbarSupportedContent">
+                            <ul class="navbar-nav d-lg-flex justify-content-between align-items-center">
+                                <li>
+                                    <button class="navbar-close">
+                                        <i class="mdi mdi-close"></i>
+                                    </button>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link active" href="@Url.Action("Index", "Home")">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="@Url.Action("Index", "World")">World</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href=@Url.Action("Magazine", "Home")>Magazine</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href=@Url.Action("Blog", "Home")>Blog</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href=@Url.Action("Sports", "Home")>Sports</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- partial -->
+       
