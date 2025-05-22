@@ -336,6 +336,7 @@
     </Compile>
     <Compile Include="Models\World\PImageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Views\Home\Forgot.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
