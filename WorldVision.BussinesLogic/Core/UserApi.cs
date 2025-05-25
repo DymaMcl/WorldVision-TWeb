@@ -140,4 +140,75 @@ namespace WorldVision.BussinesLogic.Core
             return apiCookie;
         }
 
-        
+        internal UserMinimal UserCookie(string cookie)
+        {
+            Session session;
+            UDbTable currentUser;
+
+            using (var db = new SessionContext())
+            {
+                session = db.Sessions.FirstOrDefault(s => s.CookieString == cookie && s.ExpireTime > DateTime.Now);
+            }
+
+            if (session == null) return null;
+            using (var db = new UserContext())
+            {
+                var validate = new EmailAddressAttribute();
+                if (validate.IsValid(session.Username))
+                {
+                    currentUser = db.Users.FirstOrDefault(u => u.Email == session.Username);
+                }
+                else
+                {
+                    currentUser = db.Users.FirstOrDefault(u => u.Username == session.Username);
+                }
+
+                if (currentUser == null) return null;
+                UserMinimal userminimal = new UserMinimal()
+                {
+                    Username = currentUser.Username,
+                    LasIp = currentUser.LasIp,
+                    Id = currentUser.Id,
+                    Email = currentUser.Email,
+                    Level = currentUser.Level,
+                    LastLogin = currentUser.LastLogin
+                };
+
+                return userminimal;
+            }
+        }
+
+        internal List<Image> GetGalerieDataApi()
+        {
+            List<IDbTable> img_list;
+            var local = new List<Image>();
+            using (ImageContext db = new ImageContext())
+            {
+                img_list = db.Images.ToList();
+            }
+
+            foreach (var img in img_list)
+            {
+                Mapper.Initialize(cfg => cfg.CreateMap<IDbTable, Image>());
+                var img_min = Mapper.Map<Image>(img);
+                local.Add(img_min);
+            }
+
+            return local;
+        }
+
+        internal void DeleteImageAction(int Imageid)
+        {
+            IDbTable image;
+
+            using (var db = new ImageContext())    //delete product data from Product table in database
+            {
+                image = db.Images.FirstOrDefault(m => m.ImageID == Imageid);
+                //System.IO.File.Delete(Path.Combine(HostingEnvironment.MapPath("~/") + product.PreImgPath));
+                db.Images.Remove(image);
+                db.SaveChanges();
+            }
+
+        }
+    }
+}
