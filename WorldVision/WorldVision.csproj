@@ -427,6 +427,7 @@
     <Content Include="Views\Home\Sports.cshtml" />
     <Content Include="Views\Home\Magazine.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -438,7 +439,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\AdminMod\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WorldVision.BussinesLogic\WorldVision.BussinesLogic.csproj">
