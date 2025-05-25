@@ -426,6 +426,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Sports.cshtml" />
     <Content Include="Views\Home\Magazine.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,7 +438,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\AdminMod\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\Login\" />
     <Folder Include="Views\Register\" />
   </ItemGroup>
   <ItemGroup>
