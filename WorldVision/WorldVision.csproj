@@ -424,6 +424,7 @@
     <Content Include="Views\Home\Blog.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Sports.cshtml" />
+    <Content Include="Views\Home\Magazine.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
