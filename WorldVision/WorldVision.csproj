@@ -314,6 +314,7 @@
     <Content Include="fonts\materialdesignicons-webfont.svg" />
     <Content Include="Vendors\login.js" />
     <Content Include="Vendors\materialdesignicons.min.css" />
+    <Content Include="Vendors\materialmodeldefaulticon.css" />
     <Content Include="Vendors\owl.carousel.min.css" />
     <Content Include="Vendors\owl.carousel.min.js" />
     <Content Include="Vendors\owl.theme.default.min.css" />
