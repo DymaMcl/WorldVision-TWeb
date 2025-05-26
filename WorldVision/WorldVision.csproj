@@ -337,6 +337,7 @@
     </Compile>
     <Compile Include="Models\World\PImageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Vendors\newdefaultstyles.css" />
     <None Include="Views\Home\Realestate.cshtml" />
     <None Include="Views\Home\Forgot.cshtml" />
   </ItemGroup>

@@ -13,6 +13,12 @@ namespace WorldVision.Web
             bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
                 "~/Content/font-swesome.min.css", new CssRewriteUrlTransform()));
 
+            bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
+                "~/Vendors/newdefaultstyles.css", new CssRewriteUrlTransform()));
+
+            bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
+                "~/Vendors/materialmodeldefaulticon.css", new CssRewriteUrlTransform()));
+
             bundles.Add(new StyleBundle("~/bundles/materialdesignicons/css").Include(
                 "~/Vendors/materialdesignicons.min.css", new CssRewriteUrlTransform()));
 
