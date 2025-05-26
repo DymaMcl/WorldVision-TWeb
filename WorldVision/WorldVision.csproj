@@ -310,6 +310,7 @@
     <Content Include="Vendors\aos.css" />
     <Content Include="Vendors\aos.js" />
     <Content Include="Vendors\bootstrap.min.css" />
+    <Content Include="Vendors\Csstyleinterface.css" />
     <Content Include="Vendors\js\demo.js" />
     <Content Include="fonts\materialdesignicons-webfont.svg" />
     <Content Include="Vendors\login.js" />

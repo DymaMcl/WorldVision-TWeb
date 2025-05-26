@@ -17,6 +17,9 @@ namespace WorldVision.Web
                 "~/Vendors/newdefaultstyles.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
+                "~/Vendors/Csstyleinterface.css", new CssRewriteUrlTransform()));
+
+            bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
                 "~/Vendors/materialmodeldefaulticon.css", new CssRewriteUrlTransform()));
 
             bundles.Add(new StyleBundle("~/bundles/materialdesignicons/css").Include(
