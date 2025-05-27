@@ -6,7 +6,7 @@ using WorldVision.BussinesLogic.Interfaces;
 
 namespace WorldVision.Web.Controllers
 {
-    
+
 
     public class BaseController : Controller
     {
@@ -23,7 +23,8 @@ namespace WorldVision.Web.Controllers
             var apiCookie = Request.Cookies["X-KEY"];
             if (apiCookie != null)
             {
-                var profile = _session.GetUserByCookie(apiCookie.Value);
+                // Fix: Replace the call to the non-existent method "GetUserByCookie" with "UserCookie"
+                var profile = _session.UserCookie(apiCookie.Value);
                 if (profile != null)
                 {
                     System.Web.HttpContext.Current.SetMySessionObject(profile);

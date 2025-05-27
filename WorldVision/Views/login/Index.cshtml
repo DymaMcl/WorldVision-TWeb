@@ -42,14 +42,14 @@
                                     <label class="mb-2 text-muted" for="email">E-Mail Address</label>
                                     @Html.LabelFor(m => m.Credential, new { @class = "control-label" })
                                     @Html.TextBoxFor(m => m.Credential, new
-                                    {
-                                        placeholder = "example@gmail.com",
-                                        title = "Please enter you username",
-                                        value = "",
-                                        name = "username",
-                                        id = "username",
-                                        @class = "form-control"
-                                    })
+                               {
+                                   placeholder = "example@gmail.com",
+                                   title = "Please enter you username",
+                                   value = "",
+                                   name = "username",
+                                   id = "username",
+                                   @class = "form-control"
+                               })
                                     <div class="invalid-feedback">
                                         Email is invalid
                                     </div>
@@ -64,15 +64,15 @@
                                     </div>
                                     @Html.LabelFor(m => m.Password, new { @class = "control-label" })
                                     @Html.TextBoxFor(m => m.Password, new
-                                    {
-                                        @class = "form-control",
-                                        type = "password",
-                                        title = "Please enter your password",
-                                        placeholder = "******",
-                                        value = "",
-                                        name = "password",
-                                        id = "password"
-                                    })
+                               {
+                                   @class = "form-control",
+                                   type = "password",
+                                   title = "Please enter your password",
+                                   placeholder = "******",
+                                   value = "",
+                                   name = "password",
+                                   id = "password"
+                               })
                                     <div class="invalid-feedback">
                                         Password is required
                                     </div>

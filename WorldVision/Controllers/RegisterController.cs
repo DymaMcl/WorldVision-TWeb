@@ -22,5 +22,35 @@ namespace WorldVision.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(UserRegister login)
+        {
+            if (ModelState.IsValid)
+            {
+                URegisterData data = new URegisterData
+                {
+                    Email = login.Email,
+                    Credential = login.Credential,
+                    Password = login.Password,
+                    LoginIp = Request.UserHostAddress,
+                    LoginDataTime = DateTime.Now
+                };
+
+                var userLogin = _session.UserRegister(data);
+                if (userLogin.Status)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", userLogin.StatusMsg);
+                    return View();
+                }
+            }
+
+            return View();
+        }
     }
 }
