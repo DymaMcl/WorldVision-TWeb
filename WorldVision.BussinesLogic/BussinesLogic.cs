@@ -2,7 +2,6 @@
 using WorldVision.BusinessLogic.LoginBL;
 using WorldVision.BussinesLogic.Implementation;
 using WorldVision.BussinesLogic.Interfaces;
-using WorldVision.Domain.Entities.User;
 
 namespace WorldVision.BussinesLogic
 {

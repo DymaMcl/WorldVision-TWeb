@@ -3,13 +3,9 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Umbraco.Core.Persistence;
-using Umbraco.Core.Persistence.Repositories;
-using WorldVision.BussinesLogic.Interfaces;
 using WorldVision.Domain.Entities.User;
 using WorldVision.Domain.Enums;
 
@@ -174,4 +170,23 @@ namespace WorldVision.Attributes
         UserMinimal GetUserByCookie(string cookie);
     }
 
+    public interface IRepository
+    {
+    }
+
+    public interface IQueryRepository<T>
+    {
+    }
+
+    public interface IWriteRepository<T>
+    {
+    }
+
+    public interface IReadRepository<T1, T2>
+    {
+    }
+
+    public interface IReadWriteQueryRepository<T1, T2>
+    {
+    }
 }
