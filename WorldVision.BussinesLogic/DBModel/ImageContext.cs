@@ -10,7 +10,7 @@ namespace WorldVision.BusinessLogic.DBModel
 {
     public class ImageContext : DbContext
     {
-        public ImageContext() : base("name = base")
+        public ImageContext() : base("name = dimaBase")
         {
         }
 

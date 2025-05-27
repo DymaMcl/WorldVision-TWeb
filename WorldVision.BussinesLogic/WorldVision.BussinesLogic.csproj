@@ -63,7 +63,6 @@
     <Compile Include="DBModel\SessionContext.cs" />
     <Compile Include="DBModel\UserContext.cs" />
     <Compile Include="Interfaces\IGalerie.cs" />
-    <Compile Include="Interfaces\IProfile.cs" />
     <Compile Include="Interfaces\ISession.cs" />
     <Compile Include="LoginBL\GalerieBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
