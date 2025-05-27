@@ -1,91 +1,414 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "_Header";
 }
 
+<!-- partial:partials/_navbar.html -->
+<nav class="navbar2 navbar-expand-lg navbar-light">
+    <div class="d-flex justify-content-between align-items-center navbar-top">
+        <div>
+            <a class="navbar-brand" href="#">
+                <img src="~/Images/logo.svg" alt="" />
+            </a>
+        </div>
 
-                <!-- partial:partials/_navbar.html -->
-                <nav class="navbar2 navbar-expand-lg navbar-light">
-                    <div class="d-flex justify-content-between align-items-center navbar-top">
-                      
-                        <div>
-                            <a class="navbar-brand" href="#">
-                                <img src="~/Images/logo.svg" alt="" />
-                            </a>
-                        </div>
-                        <div class="d-flex">
-                            
-                            <ul class="social-media">
-                                <li>
-                                    <a href="#">
-                                        <i class="mdi mdi-instagram"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="mdi mdi-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="mdi mdi-youtube"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="mdi mdi-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="mdi mdi-twitter"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+        <!-- Secțiune centrală pentru profilul utilizatorului -->
+        <div class="navbar-center d-flex justify-content-center align-items-center">
+            <style>
+                .modern-profile-wrapper {
+                    position: relative;
+                    z-index: 1000;
+                }
+
+                .modern-user-btn {
+                    display: flex;
+                    align-items: center;
+                    padding: 12px 24px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    border: 2px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 50px;
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 600;
+                    font-size: 14px;
+                    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+                    backdrop-filter: blur(10px);
+                    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                    .modern-user-btn::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 100%;
+                        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                        transition: left 0.6s;
+                    }
+
+                    .modern-user-btn:hover::before {
+                        left: 100%;
+                    }
+
+                    .modern-user-btn:hover {
+                        transform: translateY(-3px) scale(1.02);
+                        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+                        border-color: rgba(255, 255, 255, 0.4);
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                .modern-user-avatar {
+                    width: 32px;
+                    height: 32px;
+                    background: rgba(255, 255, 255, 0.2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 12px;
+                    font-size: 16px;
+                    backdrop-filter: blur(5px);
+                }
+
+                .modern-user-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    margin-right: 8px;
+                }
+
+                .modern-username {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 1.2;
+                }
+
+                .modern-status {
+                    font-size: 11px;
+                    opacity: 0.8;
+                    font-weight: 400;
+                }
+
+                .modern-dropdown-arrow {
+                    margin-left: auto;
+                    transition: transform 0.3s ease;
+                    font-size: 12px;
+                }
+
+                .modern-user-btn[aria-expanded="true"] .modern-dropdown-arrow {
+                    transform: rotate(180deg);
+                }
+
+                .modern-dropdown-menu {
+                    min-width: 280px;
+                    border: none;
+                    border-radius: 20px;
+                    padding: 0;
+                    overflow: hidden;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+                    background: rgba(255, 255, 255, 0.95);
+                    backdrop-filter: blur(20px);
+                    margin-top: 10px;
+                }
+
+                .modern-dropdown-header {
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 20px;
+                    margin: 0;
+                }
+
+                .modern-dropdown-user-info {
+                    display: flex;
+                    align-items: center;
+                }
+
+                .modern-dropdown-avatar {
+                    width: 48px;
+                    height: 48px;
+                    background: rgba(255, 255, 255, 0.2);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 15px;
+                    font-size: 24px;
+                }
+
+                .modern-dropdown-username {
+                    font-weight: 700;
+                    font-size: 16px;
+                    margin-bottom: 2px;
+                }
+
+                .modern-dropdown-status {
+                    font-size: 12px;
+                    opacity: 0.8;
+                }
+
+                .modern-dropdown-item {
+                    display: flex;
+                    align-items: center;
+                    padding: 15px 20px;
+                    color: #333;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+                }
+
+                    .modern-dropdown-item:hover {
+                        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                        color: white;
+                        text-decoration: none;
+                    }
+
+                    .modern-dropdown-item i {
+                        width: 20px;
+                        margin-right: 12px;
+                        text-align: center;
+                    }
+
+                .modern-dropdown-divider {
+                    height: 2px;
+                    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.3), transparent);
+                    border: none;
+                    margin: 0;
+                }
+
+                .modern-logout-item {
+                    color: #e74c3c !important;
+                    font-weight: 600;
+                    border-bottom: none;
+                }
+
+                    .modern-logout-item:hover {
+                        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%) !important;
+                    }
+
+                .modern-login-btn {
+                    display: flex;
+                    align-items: center;
+                    padding: 14px 32px;
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
+                    background-size: 300% 300%;
+                    border: 2px solid rgba(255, 255, 255, 0.3);
+                    border-radius: 50px;
+                    color: white;
+                    text-decoration: none;
+                    font-weight: 700;
+                    font-size: 14px;
+                    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+                    backdrop-filter: blur(15px);
+                    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                    position: relative;
+                    overflow: hidden;
+                    animation: gradientShift 4s ease-in-out infinite;
+                }
+
+                gradientShift {
+                    0%
+
+                {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+
+                }
+
+                .modern-login-btn::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+                    transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                }
+
+                .modern-login-btn::after {
+                    content: '';
+                    position: absolute;
+                    top: -2px;
+                    left: -2px;
+                    right: -2px;
+                    bottom: -2px;
+                    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #dda0dd);
+                    background-size: 400% 400%;
+                    border-radius: 50px;
+                    z-index: -1;
+                    animation: borderGlow 3s linear infinite;
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+
+                borderGlow {
+                    0%
+
+                {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+
+                }
+
+                .modern-login-btn:hover {
+                    transform: translateY(-4px) scale(1.05) rotateX(5deg);
+                    box-shadow: 0 20px 60px rgba(102, 126, 234, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 0 30px rgba(245, 87, 108, 0.3);
+                    border-color: rgba(255, 255, 255, 0.6);
+                    color: white;
+                    text-decoration: none;
+                    animation-duration: 2s;
+                }
+
+                    .modern-login-btn:hover::after {
+                        opacity: 1;
+                    }
+
+                .modern-login-btn:active {
+                    transform: translateY(-2px) scale(1.02);
+                    transition: all 0.1s ease;
+                }
+
+                .modern-login-btn:hover::before {
+                    left: 100%;
+                }
+
+                .modern-login-icon {
+                    margin-right: 10px;
+                    font-size: 16px;
+                    animation: iconPulse 2s ease-in-out infinite;
+                }
+
+                iconPulse {
+                    0%, 100%
+
+                {
+                    transform: scale(1);
+                }
+
+                50% {
+                    transform: scale(1.1);
+                }
+
+                }
+
+                .modern-login-text {
+                    font-weight: 700;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .modern-login-separator {
+                    margin: 0 12px;
+                    opacity: 0.8;
+                    font-weight: 300;
+                    font-size: 16px;
+                    animation: separatorGlow 3s ease-in-out infinite;
+                }
+
+                separatorGlow {
+                    0%, 100%
+
+                {
+                    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+                    opacity: 0.8;
+                }
+
+                50% {
+                    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+                    opacity: 1;
+                }
+                }
+            </style>
+
+            @if (Session["username"] != null)
+            {
+                <div class="modern-profile-wrapper">
+                    <div class="nav-item dropdown">
+                        <a class="modern-user-btn dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="modern-user-avatar">
+                                <i class="fa fa-user"></i>
+                            </div>
+                            <div class="modern-user-info">
+                                <span class="modern-username">@Session["username"]</span>
+                                <span class="modern-status">Online</span>
+                            </div>
+                            <i class="fa fa-chevron-down modern-dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu modern-dropdown-menu" aria-labelledby="userDropdown">
+                            <li class="modern-dropdown-header">
+                                <div class="modern-dropdown-user-info">
+                                    <div class="modern-dropdown-avatar">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div>
+                                        <div class="modern-dropdown-username">@Session["username"]</div>
+                                        <div class="modern-dropdown-status">Active Member</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="modern-dropdown-item" href="/Profile/Index">
+                                    <i class="fa fa-user"></i>Personal Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="modern-dropdown-item" href="#">
+                                    <i class="fa fa-cog"></i>Settings
+                                </a>
+                            </li>
+                            <li><hr class="modern-dropdown-divider"></li>
+                            <li>
+                                <a class="modern-dropdown-item modern-logout-item" href="@Url.Action("Logout", "Login")">
+                                    <i class="fa fa-sign-out-alt"></i>Sign Out
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="navbar-bottom-menu">
-                        <button class="navbar-toggler"
-                                type="button"
-                                data-target="#navbarSupportedContent"
-                                aria-controls="navbarSupportedContent"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                </div>
+            }
+            else
+            {
+                <div class="modern-profile-wrapper">
+                    <a class="modern-login-btn" href="@Url.Action("Index","Login")">
+                        <i class="fa fa-sign-in-alt modern-login-icon"></i>
+                        <span class="modern-login-text">Log In</span>
+                        <span class="modern-login-separator">|</span>
+                        <span class="modern-login-text">Sign Up</span>
+                    </a>
+                </div>
+            }
+        </div>
 
-                        <div class="navbar-collapse justify-content-center collapse"
-                             id="navbarSupportedContent">
-                            <ul class="navbar-nav d-lg-flex justify-content-between align-items-center">
-                                <li>
-                                    <button class="navbar-close">
-                                        <i class="mdi mdi-close"></i>
-                                    </button>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link active" href="@Url.Action("Index", "Home")">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="@Url.Action("Index", "World")">World</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href=@Url.Action("Magazine", "Home")>Magazine</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href=@Url.Action("Blog", "Home")>Blog</a>
-                                </li>
+        @if (Session["role"] != null)
+        {
+            var role = Session["role"].ToString();
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href=@Url.Action("Sports", "Home")>Sports</a>
-                                </li>
+            if (role == "User")
+            {
+                <div class="user-buttons me-3">
+                    <a class="btn btn-sm btn-outline-success" href="@Url.Action("Contact", "Home")">
+                        <i class="fa fa-user"></i> Contact us
+                    </a>
+                </div>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-
-                <!-- partial -->
-       
+            }
+           
