@@ -333,6 +333,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\ViewRoleController\ViewRoleController.cs" />
     <Compile Include="Controllers\WorldController.cs" />
     <Compile Include="Extension\HttpContextExtensions.cs" />
     <Compile Include="Filters\AdminAuthorizeAttribute.cs" />
