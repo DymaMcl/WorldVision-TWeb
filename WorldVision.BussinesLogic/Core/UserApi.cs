@@ -7,7 +7,6 @@ using System.Web;
 using AutoMapper;
 using WorldVision.BusinessLogic.DBModel;
 using WorldVision.BussinesLogic.DBModel;
-using WorldVision.BussinesLogic.Interfaces;
 using WorldVision.Domain.Entities.Images;
 using WorldVision.Domain.Entities.User;
 using WorldVision.Helpers;
@@ -46,12 +45,10 @@ namespace WorldVision.BussinesLogic.Core
             var validate = new EmailAddressAttribute();
             if (validate.IsValid(data.Credetial))
             {
-                /*var pass = LoginHelper.HashGen(data.Password);*/
                 var pass = data.Password;
                 using (var db = new UserContext())
                 {
                     result = db.Users.FirstOrDefault(u => u.Email == data.Credetial && u.Password == pass);
-                    Console.WriteLine(result);
                 }
 
                 if (result == null)
@@ -67,11 +64,15 @@ namespace WorldVision.BussinesLogic.Core
                     todo.SaveChanges();
                 }
 
-                return new ULoginResp { Status = true };
+                return new ULoginResp
+                {
+                    Status = true,
+                    Role = result.Level.ToString(),    // asigurat că UDbTable are această proprietate
+                    UserId = result.Id
+                };
             }
             else
             {
-                /*var pass = LoginHelper.HashGen(data.Password);*/
                 var pass = data.Password;
                 using (var db = new UserContext())
                 {
@@ -91,7 +92,12 @@ namespace WorldVision.BussinesLogic.Core
                     todo.SaveChanges();
                 }
 
-                return new ULoginResp { Status = true };
+                return new ULoginResp
+                {
+                    Status = true,
+                    Role = result.Level.ToString(),    // aici la fel
+                    UserId = result.Id
+                };
             }
         }
 
@@ -209,6 +215,198 @@ namespace WorldVision.BussinesLogic.Core
                 db.SaveChanges();
             }
 
+        }
+        // Adaugă aceste metode în clasa UserApi din WorldVision.BussinesLogic.Core
+
+        // Obține toți utilizatorii pentru admin
+        internal List<UserMinimal> GetAllUsersAction()
+        {
+            var users = new List<UserMinimal>();
+
+            using (var db = new UserContext())
+            {
+                var allUsers = db.Users.OrderByDescending(u => u.LastLogin).ToList();
+
+                foreach (var user in allUsers)
+                {
+                    users.Add(new UserMinimal
+                    {
+                        Id = user.Id,
+                        Username = user.Username,
+                        Email = user.Email,
+                        Level = user.Level,
+                        LastLogin = user.LastLogin,
+                        LasIp = user.LasIp
+                    });
+                }
+            }
+
+            return users;
+        }
+
+        // Obține utilizator după ID
+        internal UserMinimal GetUserByIdAction(int userId)
+        {
+            using (var db = new UserContext())
+            {
+                var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                if (user == null) return null;
+
+                return new UserMinimal
+                {
+                    Id = user.Id,
+                    Username = user.Username,
+                    Email = user.Email,
+                    Level = user.Level,
+                    LastLogin = user.LastLogin,
+                    LasIp = user.LasIp
+                };
+            }
+        }
+
+        // Șterge utilizator
+        internal bool DeleteUserAction(int userId)
+        {
+            try
+            {
+                using (var db = new UserContext())
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                    if (user == null) return false;
+
+                    // Verifică să nu fie admin
+                    if (user.Level == Domain.Enums.URole.Admin) return false;
+
+                    db.Users.Remove(user);
+                    db.SaveChanges();
+
+                    // Șterge și sesiunile utilizatorului
+                    using (var sessionDb = new SessionContext())
+                    {
+                        var userSessions = sessionDb.Sessions.Where(s => s.Username == user.Username || s.Username == user.Email).ToList();
+                        foreach (var session in userSessions)
+                        {
+                            sessionDb.Sessions.Remove(session);
+                        }
+                        sessionDb.SaveChanges();
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log eroarea
+                System.Diagnostics.Debug.WriteLine($"Eroare la ștergerea utilizatorului: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Blochează/Deblochează utilizator (presupunând că ai un câmp IsBlocked)
+        internal bool ToggleUserStatusAction(int userId)
+        {
+            try
+            {
+                using (var db = new UserContext())
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                    if (user == null || user.Level == Domain.Enums.URole.Admin) return false;
+
+                    // Dacă nu ai câmp IsBlocked, poți să folosești Level pentru a marca utilizatorii blocați
+                    // sau să adaugi un câmp nou în baza de date
+
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Eroare la modificarea statusului: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Promovează utilizator la admin
+        internal bool PromoteUserToAdminAction(int userId)
+        {
+            try
+            {
+                using (var db = new UserContext())
+                {
+                    var user = db.Users.FirstOrDefault(u => u.Id == userId);
+
+                    if (user == null || user.Level == Domain.Enums.URole.Admin) return false;
+
+                    user.Level = Domain.Enums.URole.Admin;
+                    db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Eroare la promovarea utilizatorului: {ex.Message}");
+                return false;
+            }
+        }
+
+        // Statistici pentru dashboard
+        internal int GetTotalUsersCountAction()
+        {
+            using (var db = new UserContext())
+            {
+                return db.Users.Count();
+            }
+        }
+
+        internal int GetAdminUsersCountAction()
+        {
+            using (var db = new UserContext())
+            {
+                return db.Users.Count(u => u.Level == Domain.Enums.URole.Admin);
+            }
+        }
+
+        internal int GetRegularUsersCountAction()
+        {
+            using (var db = new UserContext())
+            {
+                return db.Users.Count(u => u.Level == Domain.Enums.URole.User);
+            }
+        }
+
+        internal List<UserMinimal> GetRecentUsersAction(int count)
+        {
+            var users = new List<UserMinimal>();
+
+            using (var db = new UserContext())
+            {
+                var recentUsers = db.Users
+                    .OrderByDescending(u => u.LastLogin)
+                    .Take(count)
+                    .ToList();
+
+                foreach (var user in recentUsers)
+                {
+                    users.Add(new UserMinimal
+                    {
+                        Id = user.Id,
+                        Username = user.Username,
+                        Email = user.Email,
+                        Level = user.Level,
+                        LastLogin = user.LastLogin,
+                        LasIp = user.LasIp
+                    });
+                }
+            }
+
+            return users;
         }
     }
 }
