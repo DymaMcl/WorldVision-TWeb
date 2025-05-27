@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Entities\Images\IDbTable.cs" />
     <Compile Include="Entities\Images\Image.cs" />
+    <Compile Include="Entities\User\result.cs" />
     <Compile Include="Entities\User\Session.cs" />
     <Compile Include="Entities\User\UDbTable.cs" />
     <Compile Include="Entities\User\ULoginData.cs" />

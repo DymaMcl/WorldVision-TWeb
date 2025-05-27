@@ -8,7 +8,7 @@ using WorldVision.Domain.Enums;
 namespace WorldVision.Domain.Entities.User
 {
     public class UserMinimal
-    
+
     {
         public int Id { get; set; }
         public string Username { get; set; }
