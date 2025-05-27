@@ -1,101 +1,359 @@
-﻿
+﻿<!DOCTYPE html>
 @{
     ViewBag.Title = "_Footer";
 }
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="border-top"></div>
-            </div>
-            <div class="col-sm-3 col-lg-3">
-                <ul class="footer-vertical-nav">
-                    <li class="menu-title"><a href=@Url.Action("Blog", "Home")>News</a></li>
-                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
-                    <li><a href="@Url.Action("World", "Home")">World</a></li>
-                    
-                    
-                </ul>
-            </div>
-            <div class="col-sm-3 col-lg-3">
-                <ul class="footer-vertical-nav">
-                    <li class="menu-title"><a href=@Url.Action("World", "Home")>World</a></li>
-                    <li><a href="@Url.Action("Sports", "Home")">Sports</a></li>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer Îmbunătățit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css">
+    <style>
 
 
-                    <li><a href="@Url.Action("Realestate", "Home")">Real estate</a></li>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
 
-                    <li><a href=@Url.Action("Magazine", "Home")>Author</a></li>
-                    <li><a href=@Url.Action("Index","Login")>Login</a></li>
-                </ul>
-            </div>
-            
-            <div class="col-sm-3 col-lg-3">
-                <ul class="footer-vertical-nav">
-                    <li class="menu-title"><a href="#">More</a></li>
-                    
-                    <li><a href="@Url.Action("About", "Home")">About us</a></li>
-                    <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="d-flex justify-content-between">
-                    <img src="~/Images/logo.svg" class="footer-logo" alt="" />
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-                    <div class="d-flex justify-content-end footer-social">
-                        <h5 class="m-0 font-weight-600 mr-3 d-none d-lg-flex">Follow on</h5>
-                        <ul class="social-media">
-                            <li>
-                                <a href="#">
-                                    <i class="mdi mdi-instagram"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="mdi mdi-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="mdi mdi-youtube"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="mdi mdi-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="mdi mdi-twitter"></i>
-                                </a>
-                            </li>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        footer {
+            background-color: white;
+            color: var(--dark-color);
+            padding: 60px 0 20px;
+            position: relative;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+            footer::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 3px;
+                background: linear-gradient(to right, var(--accent-color), var(--secondary-color));
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col-sm-12, .col-sm-3, .col-lg-3 {
+            padding: 0 15px;
+        }
+
+        .col-sm-12 {
+            width: 100%;
+        }
+
+        .col-sm-3, .col-lg-3 {
+            width: 25%;
+        }
+
+        .border-top {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin: 10px 0 30px;
+        }
+
+        .footer-vertical-nav {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+        }
+
+            .footer-vertical-nav .menu-title {
+                margin-bottom: 20px;
+                position: relative;
+                display: inline-block;
+            }
+
+                .footer-vertical-nav .menu-title a {
+                    color: var(--primary-color);
+                    font-size: 18px;
+                    font-weight: 600;
+                    text-decoration: none;
+                    position: relative;
+                    padding-bottom: 5px;
+                }
+
+                    .footer-vertical-nav .menu-title a::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 40px;
+                        height: 2px;
+                        background-color: var(--secondary-color);
+                    }
+
+            .footer-vertical-nav li {
+                margin-bottom: 12px;
+            }
+
+                .footer-vertical-nav li a {
+                    color: rgba(44, 62, 80, 0.7);
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: all 0.3s ease;
+                    position: relative;
+                    padding-left: 15px;
+                }
+
+                    .footer-vertical-nav li a::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 6px;
+                        height: 6px;
+                        border-radius: 50%;
+                        background-color: var(--secondary-color);
+                        opacity: 0;
+                        transition: all 0.3s ease;
+                    }
+
+                    .footer-vertical-nav li a:hover {
+                        color: var(--primary-color);
+                        padding-left: 20px;
+                    }
+
+                        .footer-vertical-nav li a:hover::before {
+                            opacity: 1;
+                        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .justify-content-end {
+            justify-content: flex-end;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        .footer-social {
+            margin: 30px 0;
+        }
+
+        .m-0 {
+            margin: 0;
+        }
+
+        .font-weight-600 {
+            font-weight: 600;
+        }
+
+        .mr-3 {
+            margin-right: 1rem;
+        }
+
+        .d-none {
+            display: none;
+        }
+
+        .d-lg-flex {
+            display: flex;
+        }
+
+        .social-media {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+            .social-media li {
+                margin-left: 15px;
+            }
+
+                .social-media li a {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    background-color: rgba(52, 152, 219, 0.1);
+                    color: var(--secondary-color);
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                }
+
+                    .social-media li a:hover {
+                        background-color: var(--secondary-color);
+                        color: white;
+                        transform: translateY(-3px);
+                    }
+
+            .social-media i {
+                font-size: 18px;
+            }
+
+        .mt-5 {
+            margin-top: 3rem;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .footer-horizontal-menu {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0;
+            margin: 0;
+        }
+
+            .footer-horizontal-menu li {
+                margin-right: 20px;
+                margin-bottom: 10px;
+            }
+
+                .footer-horizontal-menu li a {
+                    color: rgba(44, 62, 80, 0.7);
+                    font-size: 13px;
+                    text-decoration: none;
+                    transition: all 0.3s ease;
+                }
+
+                    .footer-horizontal-menu li a:hover {
+                        color: var(--primary-color);
+                    }
+
+        .font-weight-medium {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="border-top"></div>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <ul class="footer-vertical-nav">
+                        <li class="menu-title"><a href=@Url.Action("Blog", "Home")>News</a></li>
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li><a href="@Url.Action("World", "Home")">World</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <ul class="footer-vertical-nav">
+                        <li class="menu-title"><a href=@Url.Action("World", "Home")>World</a></li>
+                        <li><a href="@Url.Action("Sports", "Home")">Sports</a></li>
+                        <li><a href="@Url.Action("Realestate", "Home")">Real estate</a></li>
+                        <li><a href=@Url.Action("Magazine", "Home")>Author</a></li>
+                        <li><a href=@Url.Action("Index","Login")>Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 col-lg-3">
+                    <ul class="footer-vertical-nav">
+                        <li class="menu-title"><a href="#">More</a></li>
+                        <li><a href="@Url.Action("About", "Home")">About us</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-flex justify-content-between">
+                        <img src="~/Images/logo.svg" class="footer-logo" alt="" />
+
+                        <div class="d-flex justify-content-end footer-social">
+                            <h5 class="m-0 font-weight-600 mr-3 d-none d-lg-flex">Follow on</h5>
+                            <ul class="social-media">
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-instagram"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-youtube"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-linkedin"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="mdi mdi-twitter"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="d-lg-flex justify-content-between align-items-center border-top mt-5 footer-bottom">
+                        <ul class="footer-horizontal-menu">
+                            <li><a href="#">Terms of Use.</a></li>
+                            <li><a href="#">Privacy Policy.</a></li>
+                            <li><a href="#">Accessibility & CC.</a></li>
+                            <li><a href="#">AdChoices.</a></li>
+                            <li><a href="#">Advertise with us Transcripts.</a></li>
+                            <li><a href="#">License.</a></li>
+                            <li><a href="#">Sitemap</a></li>
                         </ul>
+                        <p class="font-weight-medium">
+
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="d-lg-flex justify-content-between align-items-center border-top mt-5 footer-bottom">
-                    <ul class="footer-horizontal-menu">
-                        <li><a href="#">Terms of Use.</a></li>
-                        <li><a href="#">Privacy Policy.</a></li>
-                        <li><a href="#">Accessibility & CC.</a></li>
-                        <li><a href="#">AdChoices.</a></li>
-                        <li><a href="#">Advertise with us Transcripts.</a></li>
-                        <li><a href="#">License.</a></li>
-                        <li><a href="#">Sitemap</a></li>
-                    </ul>
-                    <p class="font-weight-medium">
-
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
+</body>
+</html>
 
