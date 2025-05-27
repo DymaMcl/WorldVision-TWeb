@@ -411,4 +411,183 @@
                 </div>
 
             }
-           
+            <!-- Afișare indicator ADMIN și butoane speciale pentru admin -->
+            if (role == "Admin")
+            {
+                <div class="admin-section d-flex align-items-center me-3">
+                    <span class="admin-badge badge bg-danger text-white me-2">
+                        <i class="fa fa-user-shield"></i> ADMIN
+                    </span>
+                    <div class="admin-buttons d-flex">
+                        <!-- Add News button -->
+                        <a class="btn btn-sm btn-success me-2 d-flex align-items-center" href="@Url.Action("AddNews", "ViewRole")" title="Adaugă noutate">
+                            <i class="fa fa-plus-circle me-1"></i> Add News
+                        </a>
+
+                        <!-- Add Category button -->
+                        <a class="btn btn-sm btn-warning text-white d-flex align-items-center"
+                           href="@Url.Action("AddCategory", "ViewRole")"
+                           title="Adaugă categorie">
+                            <i class="fa fa-folder-plus me-1"></i> Add Category
+                        </a>
+
+
+                    </div>
+                </div>
+            }
+        }
+
+        @if (Session["username"] != null)
+        {
+            <form action="@Url.Action("Logout", "Login")" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-sm btn-outline-danger nav-link" style="border:none; background:none;">
+                    <i class="fa fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+        }
+
+
+
+        <div class="d-flex align-items-center">
+
+
+            <ul class="social-media">
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-instagram"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-facebook"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-youtube"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="mdi mdi-twitter"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="navbar-bottom-menu">
+        <button class="navbar-toggler"
+                type="button"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse justify-content-center collapse"
+             id="navbarSupportedContent">
+            <ul class="navbar-nav d-lg-flex justify-content-between align-items-center">
+                <li>
+                    <button class="navbar-close">
+                        <i class="mdi mdi-close"></i>
+                    </button>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "World")">World</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Magazine", "Home")">Magazine</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Blog", "Home")">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Sports", "Home")">Sports</a>
+                </li>
+
+                <!-- Meniu admin în navbar principal (doar pentru admin) -->
+                @if (Session["role"] != null && Session["role"].ToString() == "Admin")
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-shield-alt"></i> Admin
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                            <li><a class="dropdown-item" href="/Admin/Dashboard">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Articles">Articole</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Users">Utilizatori</a></li>
+                            <li><a class="dropdown-item" href="/Admin/Settings">Setări</a></li>
+                        </ul>
+                    </li>
+                }
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="mdi mdi-magnify"></i></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- CSS personalizat pentru elementele admin -->
+<style>
+    .admin-badge {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        animation: pulse 2s infinite;
+    }
+
+    pulse {
+        0%
+
+    {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+    }
+
+    .admin-buttons .btn {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .admin-section {
+        border-left: 2px solid #dc3545;
+        padding-left: 0.75rem;
+        margin-right: 1rem;
+    }
+
+    (max-width: 768px) {
+        .admin-section
+
+    {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-buttons {
+        margin-top: 0.25rem;
+    }
+    }
+</style>
+
+<!-- partial -->
